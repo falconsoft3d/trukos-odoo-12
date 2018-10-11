@@ -1,0 +1,1 @@
+# trukos-odoo-12
