@@ -76,6 +76,8 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
       <li><a href="#git-odoo" class="cc-active">1.2 GitHub para Odoo</a></li>
       <li><a href="#erppeek-odoo" class="cc-active">1.3 Erppeek Odoo</a></li>
       <li><a href="#linux-odoo" class="cc-active">1.4 Linux Odoo</a></li>
+      <li><a href="#linux-profile" class="cc-active">1.5 Linux Profile</a></li>
+      <li><a href="#psql" class="cc-active">1.6 postgres</a></li>
 
       <li class="separator"></li>
       <li><strong>20 Mis Datos</strong></li>
@@ -164,7 +166,7 @@ cd /var/log/odoo
 rm odoo-server.log
 du -hs
 
-Dir con tamaño
+# Dir con tamaño
 ls -lh
 df -h
 
@@ -174,7 +176,48 @@ df -h
 </pre>
 
 
-      <h3 id="git-odoo">20.1 Mis Datos</h3>      
+        <h3 id="linux-odoo">1.5 Linux Profile</h3>      
+      <p> Profile <p> 
+<pre>
+<code class="python">
+nano .profile
+source .profile
+
+
+odoo_actualizar(){
+  echo Deteniendo Odoo
+  /etc/init.d/odoo stop
+  for i in /opt/odoo/server/extra-addons/*
+  do
+    echo Actualizando $i
+    git -C $i pull
+  done
+  if [[ ! -z "$1" ]]; then
+    echo "Actualizando server odoo"
+    sudo -u odoo python /opt/odoo/server/odoo-bin -c /etc/odoo/odoo.conf -d $1 -u all --stop-after-init
+  fi
+  /etc/init.d/odoo start
+  echo Finalizado
+}
+
+
+
+</code>
+</pre>
+
+
+        <h3 id="linux-odoo">1.6 Postgres</h3>      
+      <p> Profile <p> 
+<pre>
+<code class="python">
+# Cambiar pass admin
+sudo -u postgres psql -d db10-chile-sii
+UPDATE res_users SET password='x1234567890', password_crypt='HASH' WHERE login='admin';
+</code>
+</pre>
+
+
+      <h3 id="datos">20.1 Mis Datos</h3>      
       <p> Datos <p> 
 <pre>
 <code class="python">
