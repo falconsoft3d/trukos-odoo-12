@@ -78,6 +78,7 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
       <li><a href="#linux-odoo" class="cc-active">1.4 Linux Odoo</a></li>
       <li><a href="#linux-profile" class="cc-active">1.5 Linux Profile</a></li>
       <li><a href="#psql" class="cc-active">1.6 postgres</a></li>
+      <li><a href="#linux-update" class="cc-active">1.7 Actualizar Odoo</a></li>
 
       <li class="separator"></li>
       <li><strong>20 Mis Datos</strong></li>
@@ -142,11 +143,13 @@ erppeek -u admin -d db10-chile-sii --server=http://127.0.0.1:8069
 client.upgrade('l10n_cl_base')
 client.upgrade('base_travel_agency')
           </code>
-        </pre> 
+</pre> 
 
 
-        <h3 id="linux-odoo">1.4 Linux Odoo</h3>      
-      <p> Linux comandos Odoo <p> 
+
+
+<h3 id="linux-odoo">1.4 Linux Odoo</h3>      
+<p> Linux comandos Odoo <p> 
 <pre>
 <code class="python">
 # Cambiar pass root
@@ -169,15 +172,12 @@ du -hs
 # Dir con tamaño
 ls -lh
 df -h
-
-
-
 </code>
 </pre>
 
 
-        <h3 id="linux-odoo">1.5 Linux Profile</h3>      
-      <p> Profile <p> 
+<h3 id="linux-odoo">1.5 Linux Profile</h3>      
+<p> Profile <p> 
 <pre>
 <code class="python">
 nano .profile
@@ -200,14 +200,12 @@ odoo_actualizar(){
   echo Finalizado
 }
 
-
-
 </code>
 </pre>
 
 
-        <h3 id="linux-odoo">1.6 Postgres</h3>      
-      <p> Profile <p> 
+<h3 id="linux-odoo">1.6 Postgres</h3>      
+<p> Profile <p> 
 <pre>
 <code class="python">
 # Cambiar pass admin
@@ -217,8 +215,21 @@ UPDATE res_users SET password='x1234567890', password_crypt='HASH' WHERE login='
 </pre>
 
 
-      <h3 id="datos">20.1 Mis Datos</h3>      
-      <p> Datos <p> 
+
+
+<h3 id="linux-update">1.7 Acualizar Odoo</h3>      
+<p> Profile <p> 
+<pre>
+<code class="python">
+/etc/init.d/odoo stop
+su - odoo -s /bin/bash
+python /opt/odoo/server/odoo-bin -c /etc/odoo/odoo.conf -d erp -u all --stop-after-init
+</code>
+</pre>
+
+
+<h3 id="datos">20.1 Mis Datos</h3>      
+<p> Datos <p> 
 <pre>
 <code class="python">
 Marlon Falcon Hernández / http://falconsolutions.cl/odoo-precios
